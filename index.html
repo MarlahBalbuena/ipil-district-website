@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,29 +6,97 @@
   <title>IPIL DISTRICT</title>
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, sans-serif;
+    html, body {
+      height: 100%;
       margin: 0;
-      background-color: #f2f2f2;
+      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top left, #e0f7fa, #f0ffff);
+      overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* Background Animation */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, transparent 70%);
+      animation: floatBg 10s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes floatBg {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+
+    .wrapper {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      transition: margin-left 0.3s ease-in-out;
+      text-align: center;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      height: 100%;
+      width: 220px;
+      position: fixed;
+      top: 0;
+      left: -220px;
+      background-color: #004d4d;
+      padding-top: 70px;
+      overflow-x: hidden;
+      transition: left 0.3s ease-in-out;
+      z-index: 998;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar a {
+      padding: 15px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: background-color 0.2s;
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+    }
+
+    .sidebar a:hover {
+      background-color: #006666;
+    }
+
+    /* Sticky Header */
     .header {
       background-color: #006666;
       color: white;
-      padding: 15px 20px;
+      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: sticky;
       top: 0;
       z-index: 999;
+      flex-wrap: wrap;
+      text-align: center;
     }
+
     .menu-toggle {
       position: absolute;
       left: 20px;
@@ -37,138 +105,107 @@
       color: white;
       font-size: 24px;
       cursor: pointer;
-      display: none;
     }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .deped-text {
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
     .district-name {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
       display: flex;
       align-items: center;
       gap: 10px;
-      animation: fadeInUp 1s ease-in-out;
     }
+
     .district-name i {
-      font-size: 26px;
-      color: #ffd700;
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      font-size: 24px;
     }
 
-    /* SIDEBAR & OVERLAY */
-    .sidebar {
-      height: 100%;
-      width: 220px;
-      position: fixed;
-      top: 0;
-      left: -220px;
-      background-color: #004d4d;
-      padding-top: 60px;
-      transition: left 0.3s ease-in-out;
-      z-index: 998;
+    .separator {
+      width: 100px;
+      height: 2px;
+      background-color: white;
+      margin: 8px 0;
+      opacity: 0.6;
+      border-radius: 5px;
     }
-    .sidebar.active { left: 0; }
-    .sidebar a {
-      padding: 15px 20px;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      transition: background-color 0.2s;
-    }
-    .sidebar a:hover { background-color: #006666; }
-    #sidebarOverlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 997;
-      display: none;
-    }
-    #sidebarOverlay.active { display: block; }
 
-    /* MAIN CONTENT */
-    .main-content {
-      margin-left: 220px;
-      padding: 20px;
-      transition: margin-left 0.3s ease-in-out;
-      text-align: center;
+    .glow {
+      text-shadow: 0 0 6px #ffffffaa, 0 0 10px #ffffff88;
     }
-    .main-content.shifted { margin-left: 0; }
+
+    /* Responsive Sidebar */
     @media (max-width: 768px) {
-      .menu-toggle { display: inline-block; }
-      .main-content.shifted { margin-left: 0; }
+      .menu-toggle {
+        display: inline-block;
+      }
+      .main-content {
+        margin-left: 0;
+      }
     }
 
-    /* CONTENT ANIMATION */
+    /* Content */
     .content {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
     }
+
     .content.show {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .content h1 {
-      font-size: 2em;
-      color: #006666;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    }
-    .content p { font-size: 1.2em; }
-
-    /* SERVICE BUTTONS */
     .service-btns {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 15px;
       margin-top: 20px;
     }
-    .service-btn {
-      position: relative;
-      background-color: #006666;
-      color: white;
-      padding: 12px 24px;
-      margin: 10px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 16px;
-      overflow: hidden;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    .service-btn:hover {
-      background-color: #004d4d;
-      transform: translateY(-2px);
-    }
 
-    /* ICON STYLES + ANIMATION */
-    .service-btn i {
-      margin-right: 8px;
-      font-size: 18px;
+    .service-btn {
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 16px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: none;
       transition: transform 0.3s ease;
     }
-    .service-btn:hover i {
-      transform: translateY(-4px);
-      filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 8px currentColor);
-    }
-    /* Icon Colors */
-    .icon-reports     { color: #FFA500; } /* orange */
-    .icon-issuances   { color: #1E90FF; } /* dodgerblue */
-    .icon-division    { color: #32CD32; } /* limegreen */
-    .icon-forms       { color: #9932CC; } /* darkorchid */
 
-    /* DIVISION LINKS & FOOTER */
+    .service-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-reports { background: linear-gradient(to right, #00c6ff, #0072ff); box-shadow: 0 0 10px #00c6ff; }
+    .btn-issuances { background: linear-gradient(to right, #ff6a00, #ee0979); box-shadow: 0 0 10px #ee0979; }
+    .btn-links { background: linear-gradient(to right, #43e97b, #38f9d7); box-shadow: 0 0 10px #38f9d7; }
+    .btn-forms { background: linear-gradient(to right, #8e2de2, #4a00e0); box-shadow: 0 0 10px #8e2de2; }
+
+    /* Division Section */
     #division-transactions {
       display: none;
       background-color: #f4f4f4;
       padding: 40px 20px;
       text-align: center;
     }
-    #division-transactions h2 {
-      color: #006666;
-      margin-bottom: 20px;
-    }
+
     .links {
       display: flex;
       flex-direction: column;
@@ -176,6 +213,7 @@
       gap: 15px;
       margin-top: 20px;
     }
+
     .link-button, .home-button {
       background-color: #007BFF;
       color: white;
@@ -184,13 +222,30 @@
       border-radius: 8px;
       font-size: 16px;
       transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 5px;
     }
+
     .link-button:hover, .home-button:hover {
       background-color: #0056b3;
       transform: translateY(-2px);
     }
 
-    /* SCROLL-TO-TOP BUTTON */
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #006666;
+      color: white;
+      margin-top: auto;
+    }
+
+    .footer p:last-child {
+      margin-top: 10px;
+      font-style: italic;
+      opacity: 0.85;
+    }
+
+    /* Scroll-to-Top Button */
     #scrollTopBtn {
       display: none;
       position: fixed;
@@ -205,104 +260,114 @@
       cursor: pointer;
       z-index: 999;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
     }
-    #scrollTopBtn:hover { background-color: #004d4d; }
+
+    #scrollTopBtn:hover {
+      background-color: #004d4d;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
+  <div class="wrapper">
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <a href="#" onclick="navigate('home')"><i class="fas fa-house-chimney"></i> Home</a>
-    <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" class="service-btn"><i class="fas fa-chart-simple"></i> Monthly Reports</a>
-    <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" class="service-btn"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
-    <a href="#" onclick="navigate('division')"><i class="fas fa-file-circle-check"></i> Division Links</a>
-    <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" class="service-btn"><i class="fas fa-file-lines"></i> Forms & Templates</a>
-  </div>
-  <div id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <a href="#" onclick="navigate('home')"><i class="fas fa-home"></i> Home</a>
+      <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" target="_blank"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
+      <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" target="_blank"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
+      <a href="#" onclick="navigate('division')"><i class="fas fa-link"></i> Division Transactions</a>
+      <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" target="_blank"><i class="fas fa-file-alt"></i> Forms & Templates</a>
+    </div>
 
-  <!-- Header -->
-  <div class="header">
-    <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
-    <div class="district-name"><i class="fas fa-school"></i> IPIL DISTRICT</div>
-  </div>
-
-  <!-- Main content -->
-  <div class="main-content" id="mainContent">
-    <div class="content" id="home-section">
-      <h1>Welcome to the Online Hub</h1>
-      <p>Stay updated with the latest announcements, online reports, and more!</p>
-
-      <div class="service-btns">
-        <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" class="service-btn">
-          <i class="fas fa-chart-simple icon-reports"></i> Monthly Reports
-        </a>
-        <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" class="service-btn">
-          <i class="fas fa-bullhorn icon-issuances"></i> DepEd Issuances
-        </a>
-        <a href="#" onclick="navigate('division')" class="service-btn">
-          <i class="fas fa-file-circle-check icon-division"></i> Division Links
-        </a>
-        <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" class="service-btn">
-          <i class="fas fa-file-lines icon-forms"></i> Forms & Templates
-        </a>
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+      <div class="header-text">
+        <div class="deped-text glow">DEPARTMENT OF EDUCATION</div>
+        <div class="separator"></div>
+        <div class="district-name glow"><i class="fas fa-school"></i> IPIL DISTRICT</div>
       </div>
     </div>
 
-    <div id="division-transactions">
-      <h2>DIVISION LINKS</h2>
-      <div class="links">
-        <a href="https://bit.ly/depedzspersonnel" class="link-button" target="_blank">Personnel Online Portal 🔗</a>
-        <a href="https://bit.ly/LIS_Ticketing_PublicSchools" class="link-button" target="_blank">PRS LIS Ticketing 🔗</a>
-        <a href="#" onclick="navigate('home')" class="home-button">⬅ Back to Home</a>
-      </div>
-    </div>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+      <div class="content" id="home-section">
+        <h1>Welcome to the Online Hub</h1>
+        <p>Stay updated with the latest announcements, rush reports, and more!</p>
 
-    <div class="footer">
-      <p>Glory is all His.</p>
-      <p>&copy; 2025 DEPED Zamboanga Sibugay</p>
+        <div class="service-btns">
+          <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" target="_blank" class="service-btn btn-reports"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
+          <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" target="_blank" class="service-btn btn-issuances"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
+          <a href="#" onclick="navigate('division')" class="service-btn btn-links"><i class="fas fa-link"></i> Division Transactions</a>
+          <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" target="_blank" class="service-btn btn-forms"><i class="fas fa-file-alt"></i> Forms & Templates</a>
+        </div>
+      </div>
+
+      <!-- Division Transactions Section -->
+      <div id="division-transactions">
+        <h2>Links for Division Transactions</h2>
+        <div class="links">
+          <a href="https://bit.ly/depedzspersonnel" class="link-button" target="_blank">Personnel Online Portal 🔗</a>
+          <a href="https://bit.ly/LIS_Ticketing_PublicSchools" class="link-button" target="_blank">PRS LIS Ticketing 🔗</a>
+          <a href="#" onclick="navigate('home')" class="home-button">⬅ Back to Home</a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>&copy; 2025 DEPED Zamboanga Sibugay</p>
+        <p>Glory is all His.</p>
+      </div>
     </div>
   </div>
 
-  <!-- Scroll-to-Top -->
+  <!-- Scroll-to-Top Button -->
   <button id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
 
+  <!-- Script -->
   <script>
     const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('mainContent');
     const scrollBtn = document.getElementById('scrollTopBtn');
 
     function toggleSidebar() {
       sidebar.classList.toggle('active');
-      mainContent.classList.toggle('shifted');
+    }
+
+    function closeSidebar() {
       if (window.innerWidth <= 768) {
-        document.getElementById('sidebarOverlay').classList.toggle('active');
+        sidebar.classList.remove('active');
       }
     }
-    function closeSidebar() {
-      sidebar.classList.remove('active');
-      mainContent.classList.remove('shifted');
-      document.getElementById('sidebarOverlay').classList.remove('active');
-    }
+
     function navigate(section) {
       document.getElementById('home-section').style.display = (section === 'home') ? 'block' : 'none';
       document.getElementById('division-transactions').style.display = (section === 'division') ? 'block' : 'none';
       closeSidebar();
     }
-    window.onscroll = () => {
+
+    window.onscroll = function () {
       scrollBtn.style.display = (document.documentElement.scrollTop > 100) ? 'block' : 'none';
     };
+
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
     window.addEventListener('scroll', () => {
-      document.querySelectorAll('.content').forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+      const content = document.querySelectorAll('.content');
+      content.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
           el.classList.add('show');
         }
       });
     });
+
     window.dispatchEvent(new Event('scroll'));
   </script>
 </body>
