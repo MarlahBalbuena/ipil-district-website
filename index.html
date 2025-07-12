@@ -110,7 +110,6 @@
 
       .sidebar {
         width: 220px;
-        top: 0;
         left: -220px;
       }
 
@@ -238,10 +237,10 @@
   <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <a href="#" onclick="navigate('home')"><i class="fas fa-home"></i> Home</a>
-     <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" class="service-btn"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
-     <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" class="service-btn"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
+    <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" class="service-btn" target="_blank"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
+    <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" class="service-btn" target="_blank"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
     <a href="#" onclick="navigate('division')"><i class="fas fa-link"></i> Division Transactions</a>
-   <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" class="service-btn"><i class="fas fa-file-alt"></i> Forms & Templates</a>
+    <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" class="service-btn" target="_blank"><i class="fas fa-file-alt"></i> Forms & Templates</a>
   </div>
 
   <!-- Header -->
@@ -257,10 +256,10 @@
       <p>Stay updated with the latest announcements, rush reports, and more!</p>
 
       <div class="service-btns">
-        <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" class="service-btn"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
-        <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" class="service-btn"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
+        <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" class="service-btn" target="_blank"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
+        <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" class="service-btn" target="_blank"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
         <a href="#" onclick="navigate('division')" class="service-btn"><i class="fas fa-link"></i> Division Transactions</a>
-        <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" class="service-btn"><i class="fas fa-file-alt"></i> Forms & Templates</a>
+        <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" class="service-btn" target="_blank"><i class="fas fa-file-alt"></i> Forms & Templates</a>
       </div>
     </div>
 
@@ -287,6 +286,8 @@
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.getElementById('mainContent');
     const scrollBtn = document.getElementById('scrollTopBtn');
+    const homeSection = document.getElementById('home-section');
+    const divisionSection = document.getElementById('division-transactions');
 
     function toggleSidebar() {
       sidebar.classList.toggle('active');
@@ -301,12 +302,17 @@
     }
 
     function navigate(section) {
-      document.getElementById('home-section').style.display = (section === 'home') ? 'block' : 'none';
-      document.getElementById('division-transactions').style.display = (section === 'division') ? 'block' : 'none';
+      if (section === 'home') {
+        homeSection.style.display = 'block';
+        divisionSection.style.display = 'none';
+      } else if (section === 'division') {
+        homeSection.style.display = 'none';
+        divisionSection.style.display = 'block';
+      }
       closeSidebar();
     }
 
-    // Scroll button
+    // Scroll-to-top button
     window.onscroll = function () {
       scrollBtn.style.display = (document.documentElement.scrollTop > 100) ? 'block' : 'none';
     };
@@ -315,7 +321,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Scroll reveal animation
+    // Animate content on scroll
     window.addEventListener('scroll', () => {
       const content = document.querySelectorAll('.content');
       content.forEach(el => {
@@ -328,6 +334,11 @@
 
     // Initial animation
     window.dispatchEvent(new Event('scroll'));
+
+    // Ensure homepage is shown on load
+    document.addEventListener('DOMContentLoaded', () => {
+      navigate('home');
+    });
   </script>
 
 </body>
