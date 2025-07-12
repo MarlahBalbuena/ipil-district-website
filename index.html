@@ -236,20 +236,12 @@
 <body>
 
   <!-- Sidebar -->
- <div class="service-btns">
-  <a href="https://drive.google.com/drive/folders/1InYL33i-PDf-ubmUanEcbEbqKkuzK3Di" class="service-btn" target="_blank">
-    <i class="fas fa-calendar-alt"></i> Monthly Reports
-  </a>
-  <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" class="service-btn" target="_blank">
-    <i class="fas fa-bullhorn"></i> DepEd Issuances
-  </a>
-  <a href="#" onclick="navigate('division')" class="service-btn">
-    <i class="fas fa-link"></i> Division Transactions
-  </a>
-  <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" class="service-btn" target="_blank">
-    <i class="fas fa-file-alt"></i> Forms & Templates
-  </a>
-</div>
+  <div class="sidebar" id="sidebar">
+    <a href="#" onclick="navigate('home')"><i class="fas fa-home"></i> Home</a>
+    <a href="#Memos" onclick="closeSidebar()"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
+    <a href="#" onclick="navigate('division')"><i class="fas fa-link"></i> Division Transactions</a>
+    <a href="#DepEdForms" onclick="closeSidebar()"><i class="fas fa-file-alt"></i> Forms & Templates</a>
+  </div>
 
   <!-- Header -->
   <div class="header">
@@ -263,26 +255,13 @@
       <h1>Welcome to the Online Hub</h1>
       <p>Stay updated with the latest announcements, rush reports, and more!</p>
 
-     <div class="service-btns">
-  <a href="https://drive.google.com/drive/folders/1InYL33i-PDf-ubmUanEcbEbqKkuzK3Di" 
-     class="service-btn" target="_blank">
-    <i class="fas fa-calendar-alt"></i> Monthly Reports
-  </a>
-
-  <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" 
-     class="service-btn" target="_blank">
-    <i class="fas fa-bullhorn"></i> DepEd Issuances
-  </a>
-
-  <a href="#" onclick="navigate('division')" class="service-btn">
-    <i class="fas fa-link"></i> Division Transactions
-  </a>
-
-  <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" 
-     class="service-btn" target="_blank">
-    <i class="fas fa-file-alt"></i> Forms & Templates
-  </a>
-</div>
+      <div class="service-btns">
+        <a href="#" class="service-btn"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
+        <a href="#" class="service-btn"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
+        <a href="#" onclick="navigate('division')" class="service-btn"><i class="fas fa-link"></i> Division Transactions</a>
+        <a href="#" class="service-btn"><i class="fas fa-file-alt"></i> Forms & Templates</a>
+      </div>
+    </div>
 
     <div id="division-transactions">
       <h2>Links for Division Transactions</h2>
