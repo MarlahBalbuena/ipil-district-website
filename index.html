@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IPIL DISTRICT</title>
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
@@ -80,7 +82,7 @@
       background-color: #006666;
     }
 
-    /* Header */
+    /* Sticky Header */
     .header {
       background-color: #006666;
       color: white;
@@ -198,6 +200,7 @@
     .btn-issuances { background: linear-gradient(to right, #ff6a00, #ee0979); box-shadow: 0 0 10px #ee0979; }
     .btn-links { background: linear-gradient(to right, #43e97b, #38f9d7); box-shadow: 0 0 10px #38f9d7; }
     .btn-forms { background: linear-gradient(to right, #8e2de2, #4a00e0); box-shadow: 0 0 10px #8e2de2; }
+    .btn-memos { background: linear-gradient(to right, #ff4e50, #f9d423); box-shadow: 0 0 10px #ff4e50; }
 
     #division-transactions {
       display: none;
@@ -271,6 +274,7 @@
 </head>
 <body>
   <div class="wrapper">
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
       <a href="#" onclick="navigate('home')"><i class="fas fa-home"></i> Home</a>
@@ -300,10 +304,25 @@
         <p>Stay updated with the latest announcements, online reports, and more!</p>
 
         <div class="service-btns">
-          <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" target="_blank" class="service-btn btn-reports"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
-          <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" target="_blank" class="service-btn btn-issuances"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
-          <a href="#" onclick="navigate('division')" class="service-btn btn-links"><i class="fas fa-link"></i> Division Links</a>
-          <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" target="_blank" class="service-btn btn-forms"><i class="fas fa-file-alt"></i> Forms & Templates</a>
+          <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" 
+             target="_blank" class="service-btn btn-reports">
+            <i class="fas fa-calendar-alt"></i> Monthly Reports
+          </a>
+          <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" 
+             target="_blank" class="service-btn btn-issuances">
+            <i class="fas fa-bullhorn"></i> DepEd Issuances
+          </a>
+          <a href="#" onclick="navigate('division')" class="service-btn btn-links">
+            <i class="fas fa-link"></i> Division Links
+          </a>
+          <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" 
+             target="_blank" class="service-btn btn-forms">
+            <i class="fas fa-file-alt"></i> Forms & Templates
+          </a>
+          <a href="https://your-link-to-district-memos-folder-or-page" 
+             target="_blank" class="service-btn btn-memos">
+            <i class="fas fa-file-pdf"></i> District Memorandums
+          </a>
         </div>
       </div>
 
@@ -313,7 +332,6 @@
         <div class="links">
           <a href="https://bit.ly/depedzspersonnel" class="link-button" target="_blank">Personnel Online Portal 🔗</a>
           <a href="https://bit.ly/LIS_Ticketing_PublicSchools" class="link-button" target="_blank">PRS LIS Ticketing 🔗</a>
-          <a href="https://depedzamboangasibugay.ph/" class="link-button" target="_blank">SDO Zamboanga Sibugay 🔗</a>
           <a href="#" onclick="navigate('home')" class="home-button">⬅ Back to Home</a>
         </div>
       </div>
@@ -326,6 +344,7 @@
     </div>
   </div>
 
+  <!-- Scroll-to-Top Button -->
   <button id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
 
   <script>
