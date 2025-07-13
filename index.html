@@ -109,9 +109,24 @@
 
     .header-text {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
       animation: fadeInUp 1s ease-in-out;
+      text-align: left;
+    }
+
+    .district-logo {
+      width: 60px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #fff;
+    }
+
+    .text-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .deped-text {
@@ -152,6 +167,14 @@
       }
       .main-content {
         margin-left: 0;
+      }
+      .header-text {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .text-block {
+        align-items: center;
       }
     }
 
@@ -288,9 +311,12 @@
     <div class="header">
       <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
       <div class="header-text">
-        <div class="deped-text glow">DEPARTMENT OF EDUCATION</div>
-        <div class="separator"></div>
-        <div class="district-name glow"><i class="fas fa-school"></i> IPIL DISTRICT</div>
+        <img src="district-logo.png" alt="IPIL Logo" class="district-logo" />
+        <div class="text-block">
+          <div class="deped-text glow">DEPARTMENT OF EDUCATION</div>
+          <div class="separator"></div>
+          <div class="district-name glow"><i class="fas fa-school"></i> IPIL DISTRICT</div>
+        </div>
       </div>
     </div>
 
