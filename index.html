@@ -12,10 +12,11 @@
     html, body {
       height: 100%;
       margin: 0;
-      scroll-behavior: smooth;
       font-family: Arial, sans-serif;
       background: radial-gradient(circle at top left, #e0f7fa, #f0ffff);
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     body::before {
@@ -34,7 +35,7 @@
     }
 
     .wrapper {
-      min-height: 100%;
+      flex: 1;
       display: flex;
       flex-direction: column;
     }
@@ -127,6 +128,15 @@
       gap: 10px;
     }
 
+    .district-name img {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+      border-radius: 50%;
+      background-color: white;
+      padding: 3px;
+    }
+
     .separator {
       width: 100px;
       height: 2px;
@@ -138,15 +148,6 @@
 
     .glow {
       text-shadow: 0 0 6px #ffffffaa, 0 0 10px #ffffff88;
-    }
-
-    .inline-logo {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid white;
-      box-shadow: 0 0 6px rgba(255,255,255,0.8);
     }
 
     @media (max-width: 768px) {
@@ -200,7 +201,6 @@
     .btn-links { background: linear-gradient(to right, #43e97b, #38f9d7); box-shadow: 0 0 10px #38f9d7; }
     .btn-forms { background: linear-gradient(to right, #8e2de2, #4a00e0); box-shadow: 0 0 10px #8e2de2; }
 
-    /* Division Section */
     #division-transactions {
       display: none;
       background-color: #f4f4f4;
@@ -237,7 +237,6 @@
       padding: 20px;
       background-color: #006666;
       color: white;
-      margin-top: auto;
     }
 
     .footer p:last-child {
@@ -291,7 +290,7 @@
         <div class="deped-text glow">DEPARTMENT OF EDUCATION</div>
         <div class="separator"></div>
         <div class="district-name glow">
-          <img src="district-logo.png" alt="District Logo" class="inline-logo" />
+          <img src="district-logo.png" alt="IPIL Logo" />
           IPIL DISTRICT
         </div>
       </div>
@@ -312,7 +311,7 @@
       </div>
 
       <!-- Division Transactions Section -->
-      <div id="division-transactions">
+      <div id="division-transactions" class="content">
         <h2>Division Links</h2>
         <div class="links">
           <a href="https://bit.ly/depedzspersonnel" class="link-button" target="_blank">Personnel Online Portal 🔗</a>
@@ -320,19 +319,18 @@
           <a href="#" onclick="navigate('home')" class="home-button">⬅ Back to Home</a>
         </div>
       </div>
+    </div>
 
-      <!-- Footer -->
-      <div class="footer">
-        <p>&copy; July 12, 2025 </p>
-        <p>Glory is all His.</p>
-      </div>
+    <!-- Footer -->
+    <div class="footer">
+      <p>&copy; 2025 DEPED Zamboanga Sibugay</p>
+      <p>Glory is all His.</p>
     </div>
   </div>
 
   <!-- Scroll-to-Top Button -->
   <button id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
 
-  <!-- JavaScript -->
   <script>
     const sidebar = document.getElementById('sidebar');
     const scrollBtn = document.getElementById('scrollTopBtn');
