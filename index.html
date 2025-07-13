@@ -18,7 +18,6 @@
       overflow-x: hidden;
     }
 
-    /* Background Animation */
     body::before {
       content: "";
       position: fixed;
@@ -109,24 +108,9 @@
 
     .header-text {
       display: flex;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      animation: fadeInUp 1s ease-in-out;
-      text-align: left;
-    }
-
-    .district-logo {
-      width: 60px;
-      height: auto;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #fff;
-    }
-
-    .text-block {
-      display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      animation: fadeInUp 1s ease-in-out;
     }
 
     .deped-text {
@@ -143,10 +127,6 @@
       gap: 10px;
     }
 
-    .district-name i {
-      font-size: 24px;
-    }
-
     .separator {
       width: 100px;
       height: 2px;
@@ -160,7 +140,15 @@
       text-shadow: 0 0 6px #ffffffaa, 0 0 10px #ffffff88;
     }
 
-    /* Responsive Sidebar */
+    .inline-logo {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+      box-shadow: 0 0 6px rgba(255,255,255,0.8);
+    }
+
     @media (max-width: 768px) {
       .menu-toggle {
         display: inline-block;
@@ -168,17 +156,8 @@
       .main-content {
         margin-left: 0;
       }
-      .header-text {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      .text-block {
-        align-items: center;
-      }
     }
 
-    /* Content */
     .content {
       opacity: 0;
       transform: translateY(20px);
@@ -253,7 +232,6 @@
       transform: translateY(-2px);
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       padding: 20px;
@@ -268,7 +246,6 @@
       opacity: 0.85;
     }
 
-    /* Scroll-to-Top Button */
     #scrollTopBtn {
       display: none;
       position: fixed;
@@ -311,11 +288,11 @@
     <div class="header">
       <button class="menu-toggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
       <div class="header-text">
-        <img src="district-logo.png" alt="IPIL Logo" class="district-logo" />
-        <div class="text-block">
-          <div class="deped-text glow">DEPARTMENT OF EDUCATION</div>
-          <div class="separator"></div>
-          <div class="district-name glow"><i class="fas fa-school"></i> IPIL DISTRICT</div>
+        <div class="deped-text glow">DEPARTMENT OF EDUCATION</div>
+        <div class="separator"></div>
+        <div class="district-name glow">
+          <img src="district-logo.png" alt="District Logo" class="inline-logo" />
+          IPIL DISTRICT
         </div>
       </div>
     </div>
@@ -346,7 +323,7 @@
 
       <!-- Footer -->
       <div class="footer">
-        <p>&copy; 2025 DEPED Zamboanga Sibugay</p>
+        <p>&copy; July 12, 2025 </p>
         <p>Glory is all His.</p>
       </div>
     </div>
@@ -355,7 +332,7 @@
   <!-- Scroll-to-Top Button -->
   <button id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
 
-  <!-- Script -->
+  <!-- JavaScript -->
   <script>
     const sidebar = document.getElementById('sidebar');
     const scrollBtn = document.getElementById('scrollTopBtn');
