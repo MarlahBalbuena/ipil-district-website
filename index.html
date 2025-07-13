@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IPIL DISTRICT</title>
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
   <style>
     html, body {
       height: 100%;
@@ -47,7 +44,6 @@
       text-align: center;
     }
 
-    /* Sidebar */
     .sidebar {
       height: 100%;
       width: 220px;
@@ -61,9 +57,7 @@
       z-index: 998;
     }
 
-    .sidebar.active {
-      left: 0;
-    }
+    .sidebar.active { left: 0; }
 
     .sidebar a {
       padding: 15px 20px;
@@ -74,15 +68,12 @@
       transition: background-color 0.2s;
     }
 
-    .sidebar a i {
-      margin-right: 10px;
-    }
+    .sidebar a i { margin-right: 10px; }
 
     .sidebar a:hover {
       background-color: #006666;
     }
 
-    /* Sticky Header */
     .header {
       background-color: #006666;
       color: white;
@@ -192,17 +183,15 @@
       transition: transform 0.3s ease;
     }
 
-    .service-btn:hover {
-      transform: scale(1.05);
-    }
+    .service-btn:hover { transform: scale(1.05); }
 
-    .btn-reports { background: linear-gradient(to right, #00c6ff, #0072ff); box-shadow: 0 0 10px #00c6ff; }
-    .btn-issuances { background: linear-gradient(to right, #ff6a00, #ee0979); box-shadow: 0 0 10px #ee0979; }
-    .btn-links { background: linear-gradient(to right, #43e97b, #38f9d7); box-shadow: 0 0 10px #38f9d7; }
-    .btn-forms { background: linear-gradient(to right, #8e2de2, #4a00e0); box-shadow: 0 0 10px #8e2de2; }
-    .btn-memos { background: linear-gradient(to right, #ff4e50, #f9d423); box-shadow: 0 0 10px #ff4e50; }
+    .btn-reports  { background: linear-gradient(to right, #00c6ff, #0072ff); box-shadow: 0 0 10px #00c6ff; }
+    .btn-issuances{ background: linear-gradient(to right, #ff6a00, #ee0979); box-shadow: 0 0 10px #ee0979; }
+    .btn-links    { background: linear-gradient(to right, #43e97b, #38f9d7); box-shadow: 0 0 10px #38f9d7; }
+    .btn-forms    { background: linear-gradient(to right, #8e2de2, #4a00e0); box-shadow: 0 0 10px #8e2de2; }
+    .btn-memos    { background: linear-gradient(to right, #f7971e, #ffd200); box-shadow: 0 0 10px #f7971e; color: black; }
 
-    #division-transactions {
+    #division-transactions, #district-memos {
       display: none;
       background-color: #f4f4f4;
       padding: 40px 20px;
@@ -246,6 +235,38 @@
       opacity: 0.85;
     }
 
+    .memo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .memo-item h4 {
+      margin-bottom: 10px;
+      color: #006666;
+    }
+
+    .memo-item iframe {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .download-btn:hover {
+      background-color: #0056b3;
+    }
+
     #scrollTopBtn {
       display: none;
       position: fixed;
@@ -274,13 +295,13 @@
 </head>
 <body>
   <div class="wrapper">
-
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
       <a href="#" onclick="navigate('home')"><i class="fas fa-home"></i> Home</a>
       <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" target="_blank"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
       <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" target="_blank"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
       <a href="#" onclick="navigate('division')"><i class="fas fa-link"></i> Division Links</a>
+      <a href="#" onclick="navigate('memos')"><i class="fas fa-file-pdf"></i> District Memos</a>
       <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" target="_blank"><i class="fas fa-file-alt"></i> Forms & Templates</a>
     </div>
 
@@ -299,42 +320,46 @@
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
+      <!-- Home Section -->
       <div class="content" id="home-section">
         <h1>Welcome to Ipil District Online Hub</h1>
         <p>Stay updated with the latest announcements, online reports, and more!</p>
-
         <div class="service-btns">
-          <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" 
-             target="_blank" class="service-btn btn-reports">
-            <i class="fas fa-calendar-alt"></i> Monthly Reports
-          </a>
-          <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" 
-             target="_blank" class="service-btn btn-issuances">
-            <i class="fas fa-bullhorn"></i> DepEd Issuances
-          </a>
-          <a href="#" onclick="navigate('division')" class="service-btn btn-links">
-            <i class="fas fa-link"></i> Division Links
-          </a>
-          <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" 
-             target="_blank" class="service-btn btn-forms">
-            <i class="fas fa-file-alt"></i> Forms & Templates
-          </a>
-          <a href="https://your-link-to-district-memos-folder-or-page" 
-             target="_blank" class="service-btn btn-memos">
-            <i class="fas fa-file-pdf"></i> District Memorandums
-          </a>
+          <a href="https://drive.google.com/drive/folders/1nGkGpDE2yslBASo2DYV71nmZUn-SEc2v" target="_blank" class="service-btn btn-reports"><i class="fas fa-calendar-alt"></i> Monthly Reports</a>
+          <a href="https://drive.google.com/drive/folders/1mVW6OUgrg_irr_ebAKazh6678CNP-_Cz" target="_blank" class="service-btn btn-issuances"><i class="fas fa-bullhorn"></i> DepEd Issuances</a>
+          <a href="#" onclick="navigate('division')" class="service-btn btn-links"><i class="fas fa-link"></i> Division Links</a>
+          <a href="#" onclick="navigate('memos')" class="service-btn btn-memos"><i class="fas fa-file-pdf"></i> District Memorandums</a>
+          <a href="https://drive.google.com/drive/folders/1jU_tP0NOJ7c_b4LUfhVb02kGwSygowrj" target="_blank" class="service-btn btn-forms"><i class="fas fa-file-alt"></i> Forms & Templates</a>
         </div>
       </div>
 
-      <!-- Division Transactions Section -->
+      <!-- Division Links Section -->
       <div id="division-transactions" class="content">
         <h2>Division Links</h2>
         <div class="links">
           <a href="https://bit.ly/depedzspersonnel" class="link-button" target="_blank">Personnel Online Portal 🔗</a>
           <a href="https://bit.ly/LIS_Ticketing_PublicSchools" class="link-button" target="_blank">PRS LIS Ticketing 🔗</a>
-          <a href="https://https://depedzamboangasibugay.ph/" class="link-button" target="_blank">SDO Zamboanga Sibugay 🔗</a>
           <a href="#" onclick="navigate('home')" class="home-button">⬅ Back to Home</a>
         </div>
+      </div>
+
+      <!-- District Memorandums Section -->
+      <div id="district-memos" class="content">
+        <h2>District Memorandums</h2>
+        <div class="memo-list">
+          <div class="memo-item">
+            <h4>Memo No. 001 - Opening of Classes</h4>
+            <iframe src="DIV_MEMO_NO.217S.2025-Announcement-of-Related-Teaching-Non-Teaching-Vacant-Positions-On-Deped.pdf" width="100%" height="500px"></iframe>
+            <a href="pdfs/memo1.pdf" class="download-btn" download>📥 Download</a>
+          </div>
+
+          <div class="memo-item">
+            <h4>Memo No. 002 - Orientation Schedule</h4>
+            <iframe src="pdfs/memo2.pdf" width="100%" height="500px"></iframe>
+            <a href="DIV_MEMO_NO.221.S2025-Announcement-of-Non-Teaching-Vacant-Positions-in-DepEd-Zamboanga-Sibugay.pdf" class="download-btn" download>📥 Download</a>
+          </div>
+        </div>
+        <a href="#" onclick="navigate('home')" class="home-button" style="margin-top: 30px;">⬅ Back to Home</a>
       </div>
     </div>
 
@@ -348,6 +373,7 @@
   <!-- Scroll-to-Top Button -->
   <button id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
 
+  <!-- Scripts -->
   <script>
     const sidebar = document.getElementById('sidebar');
     const scrollBtn = document.getElementById('scrollTopBtn');
@@ -365,6 +391,7 @@
     function navigate(section) {
       document.getElementById('home-section').style.display = (section === 'home') ? 'block' : 'none';
       document.getElementById('division-transactions').style.display = (section === 'division') ? 'block' : 'none';
+      document.getElementById('district-memos').style.display = (section === 'memos') ? 'block' : 'none';
       closeSidebar();
     }
 
