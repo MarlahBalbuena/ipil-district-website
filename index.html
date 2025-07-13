@@ -206,6 +206,27 @@
       margin-top: 20px;
     }
 
+    .memo-links {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 30px;
+    }
+
+    .memo-links li {
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .memo-links a {
+      color: #006666;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .memo-links a:hover {
+      text-decoration: underline;
+    }
+
     .link-button, .home-button {
       background-color: #007BFF;
       color: white;
@@ -233,38 +254,6 @@
       margin-top: 10px;
       font-style: italic;
       opacity: 0.85;
-    }
-
-    .memo-list {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      margin-top: 30px;
-    }
-
-    .memo-item h4 {
-      margin-bottom: 10px;
-      color: #006666;
-    }
-
-    .memo-item iframe {
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    .download-btn {
-      display: inline-block;
-      margin-top: 10px;
-      background-color: #007BFF;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    .download-btn:hover {
-      background-color: #0056b3;
     }
 
     #scrollTopBtn {
@@ -339,6 +328,7 @@
         <div class="links">
           <a href="https://bit.ly/depedzspersonnel" class="link-button" target="_blank">Personnel Online Portal 🔗</a>
           <a href="https://bit.ly/LIS_Ticketing_PublicSchools" class="link-button" target="_blank">PRS LIS Ticketing 🔗</a>
+           <a href="https://depedzamboangasibugay.ph/" class="link-button" target="_blank">SDO Zamboanga Sibugay 🔗</a>
           <a href="#" onclick="navigate('home')" class="home-button">⬅ Back to Home</a>
         </div>
       </div>
@@ -346,19 +336,11 @@
       <!-- District Memorandums Section -->
       <div id="district-memos" class="content">
         <h2>District Memorandums</h2>
-        <div class="memo-list">
-          <div class="memo-item">
-            <h4>District Memo 001</h4>
-            <iframe src="DIV_MEMO_NO.217.S.2025.pdf" width="100%" height="500px"></iframe>
-            <a href="DIV_MEMO_NO.217.S.2025.pdf" class="download-btn" download>📥 Download</a>
-          </div>
-
-          <div class="memo-item">
-            <h4>District Memo 002</h4>
-            <iframe src="DIV_MEMO_NO.221.S2025.pdf" width="100%" height="500px"></iframe>
-            <a href="DIV_MEMO_NO.221.S2025.pdf" class="download-btn" download>📥 Download</a>
-          </div>
-        </div>
+        <ul class="memo-links">
+          <li><a href="DIV_MEMO_NO.217.S.2025.pdf" target="_blank">📄 Memo No. 001 – Uploaded PDF Files as sample only</a></li>
+          <li><a href="DIV_MEMO_NO.221.S2025.pdf" target="_blank">📄 Memo No. 002 – Uploaded PDF Files as sample only</a></li>
+          <!-- Add more memos here -->
+        </ul>
         <a href="#" onclick="navigate('home')" class="home-button" style="margin-top: 30px;">⬅ Back to Home</a>
       </div>
     </div>
