@@ -406,6 +406,62 @@
     border-bottom: none;
   }
 }
+<!-- Unnumbered -->
+<div id="unnumberedMemos" style="display: none;">
+  <style>
+    /* Card layout for mobile */
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #f9f9f9;
+      }
+
+      tbody td {
+        padding: 8px;
+        text-align: left;
+        border: none;
+        display: flex;
+        flex-direction: column;
+      }
+
+      tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .icon-glow {
+        filter: drop-shadow(0 0 3px orange);
+      }
+
+      .new-badge {
+        background-color: orange;
+        color: white;
+        font-size: 10px;
+        padding: 2px 5px;
+        border-radius: 3px;
+        margin-left: 5px;
+        animation: pulse 1s infinite;
+      }
+
+      @keyframes pulse {
+        0% { box-shadow: 0 0 5px orange; }
+        50% { box-shadow: 0 0 15px orange; }
+        100% { box-shadow: 0 0 5px orange; }
+      }
+    }
 
   </style>
 </head>
@@ -504,18 +560,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr style="border-bottom: 1px solid #ccc;">
-  <td data-label="Date Posted">August 5, 2025</td>
-  <td data-label="Title">
+       <tr style="border-bottom: 1px solid #ccc;">
+  <td data-label="Date Posted" style="padding: 10px;">August 5, 2025</td>
+  <td data-label="Title" style="padding: 10px;">
     SLC 1 #_, S. 2025 – SLC 1 SEARCH FOR OUTSTANDING GULAYAN SA PAARALAN PROGRAM (GPP) IMPLEMENTERS FOR S.Y 2025-2026
-    <span class="new-badge" style="background-color: orange; color: white; font-size: 10px; padding: 2px 5px; border-radius: 3px; margin-left: 5px;">NEW</span>
+    <span class="new-badge">NEW</span>
   </td>
-  <td data-label="Memo Type">Division Memo</td>
-  <td data-label="Action" style="text-align: center;">
-    <a href="pdfs/unnumbered/SLC1 UNNUMBERED MEMO RE GPP 2025.pdf" target="_blank" style="text-decoration: none; color: green;">View</a>
+  <td data-label="Memo Type" style="padding: 10px;">Division Memo</td>
+  <td data-label="Action" style="padding: 10px; text-align: center;">
+    <a href="pdfs/unnumbered/SLC1 UNNUMBERED MEMO RE GPP 2025.pdf" target="_blank" style="text-decoration: none; color: green;">
+      View
+    </a>
     <img src="https://img.icons8.com/fluency/24/document.png" alt="PDF Icon" class="icon-glow" style="vertical-align: middle; margin-left: 5px;">
   </td>
-</tr>		
+</tr>
 <!-- Add more memo rows below as needed -->
       </tbody>
     </table>
