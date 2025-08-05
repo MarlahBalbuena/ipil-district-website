@@ -280,6 +280,38 @@
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+.new-badge {
+  background-color: orange;
+  color: white;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  font-weight: bold;
+  box-shadow: 0 0 5px orange, 0 0 10px orange;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px orange;
+  }
+  50% {
+    box-shadow: 0 0 15px orange, 0 0 20px orange;
+  }
+  100% {
+    box-shadow: 0 0 5px orange;
+  }
+}
+.icon-glow {
+  filter: drop-shadow(0 0 3px #00c3ff);
+  transition: transform 0.3s ease;
+}
+.icon-glow:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px #00c3ff);
+}
+
   </style>
 </head>
 <body>
@@ -337,14 +369,69 @@
       </div>
 
       <!-- District Memorandums Section -->
-      <div id="district-memos" class="content">
-        <h2>District Memorandums</h2>
-        <ul class="memo-links">
-          <li><a href="DIV_MEMO_NO.217.S.2025.pdf" target="_blank">📄 Memo No. 001 – Uploaded PDF Files as sample only</a></li>
-          <li><a href="DIV_MEMO_NO.221.S2025.pdf" target="_blank">📄 Memo No. 002 – Uploaded PDF Files as sample only</a></li>
-          <!-- Add more memos here -->
-        </ul>
-        <a href="#" onclick="navigate('home')" class="home-button" style="margin-top: 30px;">⬅ Back to Home</a>
+<div id="district-memos" class="content">
+  <h2>District Memorandums</h2>
+
+  <div style="margin-bottom: 20px;">
+    <label for="memoType">Choose Memo Type:</label>
+    <select id="memoType" onchange="toggleMemoView()" style="padding: 10px; font-size: 16px;">
+      <option value="numbered">📌 Numbered Memos</option>
+      <option value="unnumbered">📁 Unnumbered Memos</option>
+    </select>
+  </div>
+
+  <!-- Numbered -->
+  <div id="numberedMemos" style="display: block;">
+   <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+  <thead>
+    <tr style="background-color: green; color: white;">
+      <th style="padding: 10px;">Date Posted</th>
+      <th style="padding: 10px;">Title</th>
+      <th style="padding: 10px;">Memo Type</th>
+      <th style="padding: 10px;">Action</th>
+    </tr>
+ 
+    <!-- Add more memo rows below as needed -->
+  </tbody>
+</table>
+  </div>
+
+  <!-- Unnumbered -->
+  <div id="unnumberedMemos" style="display: none;">
+    <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+  <thead>
+    <tr style="background-color: green; color: white;">
+      <th style="padding: 10px;">Date Posted</th>
+      <th style="padding: 10px;">Title</th>
+      <th style="padding: 10px;">Memo Type</th>
+      <th style="padding: 10px;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom: 1px solid #ccc;">
+  <td style="padding: 10px;">August 5, 2025</td>
+  <td style="padding: 10px;">
+    SLC 1 #_, S. 2025 – SLC 1 SEARCH FOR OUTSTANDING GULAYAN SA PAARALAN PROGRAM (GPP) IMPLEMENTERS FOR S.Y 2025-2026
+    <span class="new-badge" style="background-color: orange; color: white; font-size: 10px; padding: 2px 5px; border-radius: 3px; margin-left: 5px;">NEW</span>
+  </td>
+  <td style="padding: 10px;">
+    SLC Memo
+</td>
+<td style="padding: 10px; text-align: center;">
+  <a href="pdfs/unnumbered/SLC1 UNNUMBERED MEMO RE GPP 2025.pdf" target="_blank" style="text-decoration: none; color: green;">View</a>
+  <img src="https://img.icons8.com/fluency/24/document.png" alt="PDF Icon" class="icon-glow" style="vertical-align: middle; margin-left: 5px;">
+</td>
+    </tr>
+    <!-- Add more memo rows below as needed -->
+  </tbody>
+</table>
+  </div>
+
+
+  <a href="#" onclick="navigate('home')" class="home-button" style="margin-top: 30px;">⬅ Back to Home</a>
+</div>
+
+
       </div>
     </div>
 
@@ -400,6 +487,13 @@
     });
 
     window.dispatchEvent(new Event('scroll'));
+function toggleMemoView() {
+  const type = document.getElementById('memoType').value;
+  document.getElementById('numberedMemos').style.display = (type === 'numbered') ? 'block' : 'none';
+  document.getElementById('unnumberedMemos').style.display = (type === 'unnumbered') ? 'block' : 'none';
+}
+
   </script>
 </body>
 </html>
+
