@@ -311,6 +311,101 @@
   transform: scale(1.1);
   filter: drop-shadow(0 0 8px #00c3ff);
 }
+<style>
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .memo-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+
+  .memo-table th,
+  .memo-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+  .memo-table thead {
+    background-color: green;
+    color: white;
+  }
+
+  .new-badge {
+    background-color: orange;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 5px;
+  }
+
+  .icon-glow {
+    margin-left: 5px;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 3px green);
+  }
+
+  /* Responsive font and spacing for smaller screens */
+  @media (max-width: 768px) {
+    .memo-table th,
+    .memo-table td {
+      font-size: 12px;
+      padding: 8px;
+    }
+
+    .new-badge {
+      font-size: 9px;
+    }
+
+    .icon-glow {
+      width: 20px;
+    }
+  }
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  td {
+    text-align: left;
+    padding: 10px;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+}
 
   </style>
 </head>
@@ -397,37 +492,36 @@
   </div>
 
   <!-- Unnumbered -->
-  <div id="unnumberedMemos" style="display: none;">
-    <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
-  <thead>
-    <tr style="background-color: green; color: white;">
-      <th style="padding: 10px;">Date Posted</th>
-      <th style="padding: 10px;">Title</th>
-      <th style="padding: 10px;">Memo Type</th>
-      <th style="padding: 10px;">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="border-bottom: 1px solid #ccc;">
-  <td style="padding: 10px;">August 5, 2025</td>
-  <td style="padding: 10px;">
+<div id="unnumberedMemos" style="display: none; overflow-x: auto;">
+  <div class="table-wrapper">
+    <table class="memo-table">
+      <thead>
+        <tr>
+          <th>Date Posted</th>
+          <th>Title</th>
+          <th>Memo Type</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid #ccc;">
+  <td data-label="Date Posted">August 5, 2025</td>
+  <td data-label="Title">
     SLC 1 #_, S. 2025 – SLC 1 SEARCH FOR OUTSTANDING GULAYAN SA PAARALAN PROGRAM (GPP) IMPLEMENTERS FOR S.Y 2025-2026
     <span class="new-badge" style="background-color: orange; color: white; font-size: 10px; padding: 2px 5px; border-radius: 3px; margin-left: 5px;">NEW</span>
   </td>
-  <td style="padding: 10px;">
-    SLC Memo
-</td>
-<td style="padding: 10px; text-align: center;">
-  <a href="pdfs/unnumbered/SLC1 UNNUMBERED MEMO RE GPP 2025.pdf" target="_blank" style="text-decoration: none; color: green;">View</a>
-  <img src="https://img.icons8.com/fluency/24/document.png" alt="PDF Icon" class="icon-glow" style="vertical-align: middle; margin-left: 5px;">
-</td>
-    </tr>
-    <!-- Add more memo rows below as needed -->
-  </tbody>
-</table>
+  <td data-label="Memo Type">Division Memo</td>
+  <td data-label="Action" style="text-align: center;">
+    <a href="pdfs/unnumbered/SLC1 UNNUMBERED MEMO RE GPP 2025.pdf" target="_blank" style="text-decoration: none; color: green;">View</a>
+    <img src="https://img.icons8.com/fluency/24/document.png" alt="PDF Icon" class="icon-glow" style="vertical-align: middle; margin-left: 5px;">
+  </td>
+</tr>		
+<!-- Add more memo rows below as needed -->
+      </tbody>
+    </table>
   </div>
-
-
+</div>
+    
   <a href="#" onclick="navigate('home')" class="home-button" style="margin-top: 30px;">⬅ Back to Home</a>
 </div>
 
